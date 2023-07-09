@@ -26,7 +26,7 @@ RUN set -ex; \
 
 FROM debian:buster-slim
 
-ARG WORKDIR=/opt/cli
+WORKDIR /opt/cli
 
 COPY --from=builder /opt/cli/dist /opt/cli/dist
 
