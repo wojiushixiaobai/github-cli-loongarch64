@@ -1,16 +1,16 @@
-FROM golang:1.19-buster as builder
+FROM golang:1.21-buster as builder
 
 RUN set -ex \
     && apt-get update \
     && apt-get install -y rpm reprepro \
     && rm -rf /var/lib/apt/lists/*
 
-ARG GORELEASER_VERSION=v1.18.2
+ARG GORELEASER_VERSION=latest
 
 RUN set -ex; \
     go install github.com/goreleaser/goreleaser@${GORELEASER_VERSION}
 
-ARG CLI_VERSION=v2.31.0
+ARG CLI_VERSION=v2.37.0
 ENV CLI_VERSION=${CLI_VERSION}
 
 ARG WORKDIR=/opt/cli
