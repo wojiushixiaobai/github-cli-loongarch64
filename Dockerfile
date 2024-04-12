@@ -1,4 +1,4 @@
-FROM golang:1.21-buster as builder
+FROM golang:1.22-buster as builder
 
 RUN set -ex \
     && apt-get update \
@@ -10,7 +10,7 @@ ARG GORELEASER_VERSION=latest
 RUN set -ex; \
     go install github.com/goreleaser/goreleaser@${GORELEASER_VERSION}
 
-ARG CLI_VERSION=v2.37.0
+ARG CLI_VERSION=v2.47.0
 ENV CLI_VERSION=${CLI_VERSION}
 
 ARG WORKDIR=/opt/cli
