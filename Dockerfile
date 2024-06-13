@@ -10,7 +10,7 @@ ARG GORELEASER_VERSION=latest
 RUN set -ex; \
     go install github.com/goreleaser/goreleaser@${GORELEASER_VERSION}
 
-ARG CLI_VERSION=v2.47.0
+ARG CLI_VERSION=v2.51.0
 ENV CLI_VERSION=${CLI_VERSION}
 
 ARG WORKDIR=/opt/cli
