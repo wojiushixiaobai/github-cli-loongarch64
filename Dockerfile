@@ -1,4 +1,4 @@
-FROM golang:1.22-buster as builder
+FROM cr.loongnix.cn/library/golang:1.22-buster as builder
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
@@ -13,7 +13,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     set -ex; \
     go install github.com/goreleaser/goreleaser@${GORELEASER_VERSION}
 
-ARG CLI_VERSION=v2.63.0
+ARG CLI_VERSION=v2.64.0
 ENV CLI_VERSION=${CLI_VERSION}
 
 ARG WORKDIR=/opt/cli
@@ -28,7 +28,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     set -ex; \
     goreleaser --config /opt/.goreleaser.yml release --skip-publish --clean
 
-FROM debian:buster-slim
+FROM cr.loongnix.cn/library/debian:buster-slim
 
 WORKDIR /opt/cli
 
